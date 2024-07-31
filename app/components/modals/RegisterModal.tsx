@@ -9,6 +9,7 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../Input';
 import { toast } from 'react-hot-toast';
+import Button from '../Button';
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -35,12 +36,18 @@ const RegisterModal = () => {
     }
     setIsLoading(false);
   };
-  const bodyContent = (
+  const BodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnb" subtitle="Create An Account!"></Heading>
       <Input id="email" label="Email" register={register} errors={errors} required />
       <Input id="name" label="Name" register={register} errors={errors} required />
       <Input id="password" label="Password" register={register} errors={errors} required />
+    </div>
+  );
+  const FooterContent = (
+    <div className="flex flex-col gap-4 mt-3">
+      <hr />
+      <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => {}}></Button>
     </div>
   );
   return (
@@ -51,7 +58,8 @@ const RegisterModal = () => {
       actionLabel="Continue"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
-      body={bodyContent}
+      body={BodyContent}
+      footer={FooterContent}
     />
   );
 };
